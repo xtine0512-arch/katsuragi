@@ -11,6 +11,10 @@ interface ResultsCardsProps {
   searchText?: string;
   totalCount: number;
   onSelectRecord: (record: HaikuRecord) => void;
+  /** お気に入りのID一覧（省略可） */
+  favoriteIds?: number[];
+  /** お気に入りのトグル関数（省略可） */
+  onToggleFavorite?: (id: number) => void;
 }
 
 export function ResultsCards({
@@ -18,6 +22,8 @@ export function ResultsCards({
   searchText = "",
   totalCount,
   onSelectRecord,
+  favoriteIds,
+  onToggleFavorite,
 }: ResultsCardsProps) {
   const [page, setPage] = useState(1);
 
@@ -43,17 +49,20 @@ export function ResultsCards({
     <div>
       {/* 件数ヘッダー */}
       <div className="flex items-center justify-between mb-4 px-1">
-        <p className="text-xs text-[#B5A49A]">
-          {records.length < totalCount ? (
-            <>
-              <span className="font-semibold text-[#7A6558]">{records.length.toLocaleString()}</span>
-              <span className="ml-1">件</span>
-              <span className="ml-1 text-[#D8C8BE]">/ 全{totalCount.toLocaleString()}件</span>
-            </>
-          ) : (
-            <>全 <span className="font-semibold text-[#7A6558]">{totalCount.toLocaleString()}</span> 件</>
-          )}
-        </p>
+        <div className="flex items-center gap-2">
+          <div className="w-1 h-3.5 bg-[#D4849A] rounded-full" />
+          <p className="text-xs text-[#B5A49A]">
+            {records.length < totalCount ? (
+              <>
+                <span className="font-semibold text-[#7A6558]">{records.length.toLocaleString()}</span>
+                <span className="ml-1">件</span>
+                <span className="ml-1 text-[#D8C8BE]">/ 全{totalCount.toLocaleString()}件</span>
+              </>
+            ) : (
+              <>全 <span className="font-semibold text-[#7A6558]">{totalCount.toLocaleString()}</span> 件</>
+            )}
+          </p>
+        </div>
         {pageCount > 1 && (
           <p className="text-xs text-[#B5A49A]">
             {pageStart + 1}〜{Math.min(pageStart + PAGE_SIZE, records.length)}件
@@ -62,13 +71,15 @@ export function ResultsCards({
       </div>
 
       {/* カード一覧 */}
-      <div className="space-y-3">
+      <div className="space-y-3.5">
         {pageRecords.map((record) => (
           <HaikuCard
             key={record.id}
             record={record}
             searchText={searchText}
             onClick={onSelectRecord}
+            isFavorite={favoriteIds?.includes(record.id)}
+            onToggleFavorite={onToggleFavorite}
           />
         ))}
       </div>

@@ -19,7 +19,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="俳句を検索..."
-        className="w-full pl-11 pr-10 py-3 bg-white border border-[#E8D8CC] rounded-xl text-sm text-[#2C1810] placeholder:text-[#B5A49A] focus:outline-none focus:ring-2 focus:ring-[#D4849A] focus:border-transparent shadow-[0_1px_4px_rgba(0,0,0,0.05)] transition-shadow"
+        className="w-full pl-11 pr-10 py-3.5 bg-white border border-[#E8D8CC] rounded-2xl text-sm text-[#2C1810] placeholder:text-[#C5B5AD] focus:outline-none focus:ring-2 focus:ring-[#D4849A] focus:border-transparent shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-shadow"
       />
       {value && (
         <button
