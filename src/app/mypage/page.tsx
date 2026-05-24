@@ -220,13 +220,15 @@ export default function MyPage() {
       <header className="bg-white sticky top-0 z-40 shadow-[0_1px_8px_rgba(0,0,0,0.06)] overflow-hidden">
         <div className="relative">
           <div className="max-w-xl mx-auto px-5 py-3.5 flex items-center gap-2.5">
-            <div className="w-[3px] h-9 bg-gradient-to-b from-[#B83250] to-[#D45880] rounded-full flex-shrink-0" />
-            <div className="flex flex-col gap-[3px]">
-              <h1 className="text-[19px] font-bold text-[#2C1810] tracking-wider font-serif leading-none">
-                マイページ
-              </h1>
-              <span className="text-[11px] text-[#B5A49A] font-serif tracking-[0.2em]">かつらぎ選集</span>
-            </div>
+            <Link href="/" className="flex items-center gap-2.5 active:opacity-70 transition-opacity">
+              <div className="w-[3px] h-9 bg-gradient-to-b from-[#B83250] to-[#D45880] rounded-full flex-shrink-0" />
+              <div className="flex flex-col gap-[3px]">
+                <h1 className="text-[19px] font-bold text-[#2C1810] tracking-wider font-serif leading-none">
+                  マイページ
+                </h1>
+                <span className="text-[11px] text-[#B5A49A] font-serif tracking-[0.2em]">かつらぎ選集</span>
+              </div>
+            </Link>
           </div>
           <div className="absolute right-0 top-0 pointer-events-none">
             <SakuraDecoration className="w-[110px] h-[90px]" />

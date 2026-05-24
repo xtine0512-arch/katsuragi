@@ -66,7 +66,7 @@ const DEFAULT_CONFIG = {
 
 export function SeasonFilter({ seasons, selected, onToggle }: SeasonFilterProps) {
   return (
-    <div className="grid grid-cols-3 gap-1.5">
+    <div className="grid grid-cols-3 gap-1 md:gap-1.5">
       {seasons.map((season) => {
         const isActive = selected.has(season);
         const cfg = SEASON_CONFIG[season] ?? DEFAULT_CONFIG;
@@ -77,7 +77,7 @@ export function SeasonFilter({ seasons, selected, onToggle }: SeasonFilterProps)
             onClick={() => onToggle(season)}
             className={`
               relative flex flex-col items-center justify-center
-              py-3 rounded-xl border-2 transition-all
+              py-2 md:py-3 rounded-xl border-2 transition-all
               active:scale-[0.97] select-none
               ${cfg.border}
               ${isActive ? cfg.active : cfg.inactive}
@@ -87,7 +87,7 @@ export function SeasonFilter({ seasons, selected, onToggle }: SeasonFilterProps)
             `}
           >
             {/* メインの季節名 */}
-            <span className="text-[17px] font-bold tracking-wider leading-none font-serif">
+            <span className="text-[15px] md:text-[17px] font-bold tracking-wider leading-none font-serif">
               {season}
             </span>
             {/* 選択中チェックマーク */}

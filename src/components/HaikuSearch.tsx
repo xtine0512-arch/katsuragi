@@ -84,7 +84,7 @@ export function HaikuSearch() {
   return (
     <>
       {/* メインコンテンツエリア */}
-      <div className="pb-[240px]">
+      <div className="pb-[195px] md:pb-[240px]">
         {isSearching ? (
           /* 検索・フィルター中: 結果一覧を表示 */
           <>
@@ -126,15 +126,15 @@ export function HaikuSearch() {
 
       {/* ─────── 固定ボトム検索バー（BottomNavの上） ─────── */}
       <div className="fixed bottom-[56px] left-0 right-0 z-30 overflow-hidden bg-white/95 backdrop-blur-sm border-t border-[#F0E4DA] shadow-[0_-4px_24px_rgba(44,24,16,0.09)]">
-        <div className="max-w-xl mx-auto px-3 pt-3 pb-3">
+        <div className="max-w-xl md:max-w-2xl mx-auto px-3 md:px-4 pt-2 pb-2 md:pt-3 md:pb-3">
           {/* 検索バー + 絞込ボタン */}
-          <div className="flex gap-2 mb-2.5">
+          <div className="flex gap-2 mb-1.5 md:mb-2.5">
             <div className="flex-1">
               <SearchBar value={filters.searchText} onChange={setSearchText} />
             </div>
             <button
               onClick={() => setFilterOpen(true)}
-              className={`flex-shrink-0 flex items-center gap-1.5 px-3.5 rounded-2xl border text-sm font-medium transition-all shadow-[0_2px_8px_rgba(0,0,0,0.06)] ${
+              className={`flex-shrink-0 flex items-center gap-1.5 px-3.5 rounded-2xl border text-sm md:text-base font-medium transition-all shadow-[0_2px_8px_rgba(0,0,0,0.06)] ${
                 extraFilterCount > 0
                   ? "bg-[#B83250] text-white border-[#B83250] shadow-[0_2px_8px_rgba(184,50,80,0.3)]"
                   : "bg-white border-[#E8D8CC] text-[#7A6558] hover:bg-[#FAF6F1]"
@@ -192,30 +192,42 @@ export function HaikuSearch() {
 /* ───────────────────────────────────────────────────
    ウェルカム／ヒーローセクション（初期表示）
 ─────────────────────────────────────────────────── */
+function splitHaikuParts(record: HaikuRecord): [string, string, string] {
+  const { haiku, split1, split2 } = record;
+  if (split1 && split2 && split1 < split2 && split2 < haiku.length) {
+    return [haiku.slice(0, split1), haiku.slice(split1, split2), haiku.slice(split2)];
+  }
+  return [haiku, "", ""];
+}
+
 function HeroView({ totalCount, featuredRecord }: {
   totalCount: number;
   featuredRecord: HaikuRecord | null;
 }) {
+  const parts = featuredRecord ? splitHaikuParts(featuredRecord) : null;
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[52vh] px-4 select-none">
       {/* コレクション情報 */}
-      <div className="text-center mb-8">
-        <p className="text-xs text-[#B5A49A] tracking-[0.2em] font-serif mb-1">収録俳句</p>
-        <p className="text-3xl font-bold text-[#2C1810] font-serif tracking-wider">
+      <div className="text-center mb-8 md:mb-10">
+        <p className="text-xs md:text-sm text-[#B5A49A] tracking-[0.2em] font-serif mb-1">収録俳句</p>
+        <p className="text-3xl md:text-5xl font-bold text-[#2C1810] font-serif tracking-wider">
           {totalCount.toLocaleString()}
-          <span className="text-base font-medium ml-1">句</span>
+          <span className="text-base md:text-2xl font-medium ml-1">句</span>
         </p>
       </div>
 
-      {/* おすすめ俳句（縦書き） */}
-      {featuredRecord && (
-        <div className="flex flex-col items-center gap-3 mb-8">
-          <div className="bg-white rounded-2xl shadow-[0_2px_20px_rgba(44,24,16,0.08)] border border-[#EDE0D8] px-8 py-6">
-            <p className="haiku-vertical text-[18px] text-[#2C1810] tracking-widest leading-relaxed">
-              {featuredRecord.haiku}
+      {/* おすすめ俳句（縦書き3行） */}
+      {featuredRecord && parts && (
+        <div className="flex flex-col items-center gap-3 md:gap-4 mb-8 md:mb-10">
+          <div className="bg-white rounded-2xl shadow-[0_2px_20px_rgba(44,24,16,0.08)] border border-[#EDE0D8] px-8 py-6 md:px-12 md:py-8 flex justify-center">
+            <p className="haiku-vertical text-[18px] md:text-[24px] text-[#2C1810] tracking-widest leading-relaxed">
+              {parts[0]}
+              {parts[1] && <><br />{parts[1]}</>}
+              {parts[2] && <><br />{parts[2]}</>}
             </p>
           </div>
-          <p className="text-xs text-[#B5A49A] font-serif">
+          <p className="text-xs md:text-sm text-[#B5A49A] font-serif">
             {featuredRecord.author}
             {featuredRecord.region && <span className="ml-2">({featuredRecord.region})</span>}
           </p>
@@ -223,7 +235,7 @@ function HeroView({ totalCount, featuredRecord }: {
       )}
 
       {/* 案内テキスト */}
-      <p className="text-xs text-[#C5B5AD] text-center leading-relaxed">
+      <p className="text-xs md:text-sm text-[#C5B5AD] text-center leading-relaxed">
         下の検索バーや季節ボタンから<br />お探しの俳句を見つけてください
       </p>
     </div>

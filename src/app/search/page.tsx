@@ -3,6 +3,7 @@
 export const runtime = "edge";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { fetchHaiku, fetchMeta } from "@/lib/data";
 import { useHaikuSearch } from "@/hooks/useHaikuSearch";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -154,12 +155,12 @@ export default function SearchPage() {
       {/* ヘッダー */}
       <header className="bg-white sticky top-0 z-40 shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
         <div className="max-w-xl mx-auto px-5 py-3 flex items-center justify-between overflow-hidden">
-          <div className="flex items-baseline gap-2">
+          <Link href="/" className="flex items-baseline gap-2 active:opacity-70 transition-opacity">
             <h1 className="text-xl font-bold text-[#2C1810] tracking-wide font-serif">
               かつらぎ選集
             </h1>
             <span className="text-sm text-[#B5A49A] font-serif">第十巻</span>
-          </div>
+          </Link>
           <div className="flex-shrink-0 -mr-2 -mt-3 -mb-3">
             <SakuraDecoration className="w-[90px] h-[76px]" />
           </div>
