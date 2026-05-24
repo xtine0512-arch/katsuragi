@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --bg-cream:       #F4EDE4;
+  --bg-cream-light: #FAF6F1;
+  --color-card:     #FFFFFF;
+  --color-accent:   #B83250;
+  --color-accent-2: #C9566E;
+  --color-text-1:   #2C1810;
+  --color-text-2:   #7A6558;
+  --color-text-3:   #B5A49A;
+  --color-border:   #E8D8CC;
+  --color-sakura:   #F2C4C4;
+  --color-branch:   #C4948E;
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-noto-serif-jp), ui-serif, "Hiragino Mincho ProN", serif;
+}
+
+body {
+  background: var(--bg-cream);
+  color: var(--color-text-1);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.haiku-text {
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+}
+
+.haiku-vertical {
+  font-family: var(--font-serif);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.15em;
+  line-height: 2.4;
+}
+
+/* カスタムスクロールバー */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
