@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { HaikuSearch } from "@/components/HaikuSearch";
 import { SakuraDecoration } from "@/components/SakuraDecoration";
 import { BottomNav } from "@/components/BottomNav";

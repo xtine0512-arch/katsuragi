@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = "edge";
+
 import { useState, useEffect, useCallback } from "react";
 import { fetchHaiku, fetchMeta } from "@/lib/data";
 import { useHaikuSearch } from "@/hooks/useHaikuSearch";

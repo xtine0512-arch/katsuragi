@@ -16,6 +16,8 @@ const notoSansJP = Noto_Sans_JP({
   display: "swap",
 });
 
+export const runtime = "edge";
+
 export const metadata: Metadata = {
   title: "かつらぎ選集 第十巻",
   description: "かつらぎ選集第十巻 俳句データ検索・閲覧",
