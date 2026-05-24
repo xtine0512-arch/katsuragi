@@ -59,7 +59,6 @@ export default function FavoritesPage() {
                 <h1 className="text-[19px] font-bold text-[#2C1810] tracking-wider font-serif leading-none">
                   かつらぎ選集
                 </h1>
-                <span className="text-[11px] text-[#B5A49A] font-serif tracking-[0.2em]">第十巻</span>
               </div>
             </Link>
           </div>

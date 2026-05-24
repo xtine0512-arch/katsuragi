@@ -159,7 +159,6 @@ export default function SearchPage() {
             <h1 className="text-xl font-bold text-[#2C1810] tracking-wide font-serif">
               かつらぎ選集
             </h1>
-            <span className="text-sm text-[#B5A49A] font-serif">第十巻</span>
           </Link>
           <div className="flex-shrink-0 -mr-2 -mt-3 -mb-3">
             <SakuraDecoration className="w-[90px] h-[76px]" />
