@@ -153,15 +153,18 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-[#F4EDE4] flex flex-col">
       {/* ヘッダー */}
-      <header className="bg-white sticky top-0 z-40 shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
-        <div className="max-w-xl mx-auto px-5 py-3 flex items-center justify-between overflow-hidden">
-          <Link href="/" className="flex items-baseline gap-2 active:opacity-70 transition-opacity">
-            <h1 className="text-xl font-bold text-[#2C1810] tracking-wide font-serif">
-              かつらぎ選集
-            </h1>
-          </Link>
-          <div className="flex-shrink-0 -mr-2 -mt-3 -mb-3">
-            <SakuraDecoration className="w-[90px] h-[76px]" />
+      <header className="bg-white sticky top-0 z-40 shadow-[0_1px_8px_rgba(0,0,0,0.06)] overflow-hidden">
+        <div className="relative">
+          <div className="max-w-xl md:max-w-2xl mx-auto px-5 py-3.5 md:py-4 flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5 active:opacity-70 transition-opacity">
+              <div className="w-[3px] h-9 md:h-11 bg-gradient-to-b from-[#B83250] to-[#D45880] rounded-full flex-shrink-0" />
+              <h1 className="text-[19px] md:text-[24px] font-bold text-[#2C1810] tracking-wider font-serif leading-none">
+                かつらぎ選集
+              </h1>
+            </Link>
+          </div>
+          <div className="absolute right-0 top-0 pointer-events-none">
+            <SakuraDecoration className="w-[110px] h-[90px]" />
           </div>
         </div>
       </header>
